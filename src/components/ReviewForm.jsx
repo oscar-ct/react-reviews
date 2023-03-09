@@ -1,12 +1,14 @@
 import Card from "./Card";
 import {useState} from "react";
 import Button from "./Button";
+import RatingSelect from "./RatingSelect";
 
 function ReviewForm() {
 
     const [text, setText] = useState("");
     const [message, setMessage] = useState(null);
     const [btnDisabled, setBtnDisabled] = useState(true);
+    const [rating, setRating] = useState(3)
 
 
 
@@ -32,8 +34,14 @@ function ReviewForm() {
             <div className="service">
                 How would you rate our service with us?
             </div>
-            <form className="form-wrapper">
-                <div className="form-border">
+            <form>
+                <div>
+                    <RatingSelect select={(rating) => {
+                        setRating(rating);
+                    }}/>
+                </div>
+
+                <div className="form-border form-wrapper">
                     <input onChange={handleMessage} value={text} type="text" placeholder="Write a review" required className="input"/>
                     <Button type="submit" version='secondary'  isDisabled={btnDisabled}
                     >Submit</Button>

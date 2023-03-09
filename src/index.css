@@ -91,3 +91,11 @@ code {
   cursor: pointer;
   transform: translateX(15px);
 }
+.rating-wrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.rating {
+  list-style-type: none;
+}
