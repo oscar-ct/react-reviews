@@ -8,6 +8,7 @@ import ReviewList from "./components/ReviewList";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import About from "./components/About";
 import AboutLink from "./components/AboutLink";
+import HomeLink from "./components/HomeLink";
 
 
 function App() {
@@ -21,11 +22,16 @@ function App() {
                             <ReviewForm/>
                             <ReviewStats/>
                             <ReviewList/>
-                            <AboutLink/>
+                            <AboutLink title="About"/>
                         </>
                     }>
                     </Route>
-                    <Route path="/about" element={<About/>}>
+                    <Route path="/about" element={
+                        <>
+                            <About/>
+                            <HomeLink/>
+                        </>
+                    }>
                     </Route>
                 </Routes>
             </Router>

@@ -124,7 +124,7 @@ input[type='radio'] {
   color: white;
 }
 .about-text {
-  color: white;
   font-size: 18px;
   line-height: 25px;
+  padding: 25px;
 }
