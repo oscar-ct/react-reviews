@@ -4,7 +4,7 @@ import {useState} from "react";
 
 function RatingSelect( {select} ) {
 
-    const [selected, setSelected] = useState(3);
+    const [selected, setSelected] = useState(10);
 
     const handleChange = (e) => {
         setSelected(parseInt(e.currentTarget.value))

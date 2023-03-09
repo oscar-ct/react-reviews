@@ -8,7 +8,7 @@ function ReviewForm() {
     const [text, setText] = useState("");
     const [message, setMessage] = useState(null);
     const [btnDisabled, setBtnDisabled] = useState(true);
-    const [rating, setRating] = useState(3)
+    const [rating, setRating] = useState(10)
 
 
 
