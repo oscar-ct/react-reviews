@@ -10,15 +10,21 @@ function ReviewItem( {item} ) {
     const { deleteReview } = useContext(ReviewContext);
 
     const handleDelete = () => {
-
+        deleteReview(item.id);
     }
+
     return (
         <>
             <div className="rating-display">{item.rating}</div>
             <Card>
                 <div className="crud-wrapper">
-                    <FaEdit onClick={handleDelete} className="icn" color="purple" />
-                    <FaTimes className="icn" color="red" />
+                    <button className="icn" onClick={() => alert("hey")}>
+                        <FaEdit  color="purple" />
+                    </button>
+                    <button className="icn" onClick={handleDelete}>
+                        <FaTimes color="red" />
+                    </button>
+
                 </div>
                 <div className="review-display">{item.text}</div>
 

@@ -1,5 +1,6 @@
 import {createContext, useState} from "react";
 
+
 const ReviewContext = createContext();
 
 export const ReviewProvider = function ( {children} ) {
@@ -26,8 +27,16 @@ export const ReviewProvider = function ( {children} ) {
       setReviews([newReview, ...reviews])
     }
 
+    const deleteReview = (id) => {
+        if (window.confirm("Are you sure you want to delete?")) {
+            setReviews(reviews.filter(function (review) {
+                return review.id !== id;
+            }));
+        }
+    }
+
     return <ReviewContext.Provider
-    value={{reviews, addReview}}>
+    value={{reviews, addReview, deleteReview}}>
         {children}
     </ReviewContext.Provider>
 }
