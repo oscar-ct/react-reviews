@@ -1,8 +1,7 @@
 
 function Header() {
     return (
-        <div>
-
+        <div className="header"> Reviews
         </div>
     )
 }
