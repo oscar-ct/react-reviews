@@ -1,16 +1,18 @@
 import Card from "./Card";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import Button from "./Button";
 import RatingSelect from "./RatingSelect";
+import ReviewContext from "../context/ReviewsContext";
 
+let id = 100;
 function ReviewForm() {
 
     const [text, setText] = useState("");
     const [message, setMessage] = useState(null);
     const [btnDisabled, setBtnDisabled] = useState(true);
-    const [rating, setRating] = useState(10)
+    const [rating, setRating] = useState(10);
 
-
+    const { addReview } = useContext(ReviewContext);
 
     const handleMessage = (e) => {
         if (text === "") {
@@ -26,7 +28,20 @@ function ReviewForm() {
             setMessage(null);
             setBtnDisabled(false)
         }
-        setText(e.target.value)
+        setText(e.target.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (text.trim().length >= 10) {
+            const newReview = {
+                id: id++,
+                text: text,
+                rating: rating,
+            }
+            addReview(newReview);
+        }
+        setText('');
     }
 
     return (
@@ -34,7 +49,7 @@ function ReviewForm() {
             <div className="service">
                 How would you rate our service with us?
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <RatingSelect select={(rating) => {
                         setRating(rating);

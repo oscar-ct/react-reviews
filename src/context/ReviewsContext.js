@@ -22,8 +22,12 @@ export const ReviewProvider = function ( {children} ) {
         }
     ]);
 
+    const addReview = (newReview) => {
+      setReviews([newReview, ...reviews])
+    }
+
     return <ReviewContext.Provider
-    value={{reviews}}>
+    value={{reviews, addReview}}>
         {children}
     </ReviewContext.Provider>
 }
