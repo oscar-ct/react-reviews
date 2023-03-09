@@ -2,14 +2,19 @@
 import './App.css';
 import Header from "./components/Header";
 import ReviewForm from "./components/ReviewForm";
+import ReviewStats from "./components/ReviewStats";
+import {ReviewProvider} from "./context/ReviewsContext";
 
 
 function App() {
     return (
-        <>
-            <Header/>
-            <ReviewForm/>
-        </>
+        <ReviewProvider>
+            <>
+                <Header/>
+                <ReviewForm/>
+                <ReviewStats/>
+            </>
+        </ReviewProvider>
   );
 }
 
