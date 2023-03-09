@@ -1,10 +1,10 @@
 import {useContext} from "react";
 import ReviewContext from "../context/ReviewsContext";
-import Card from "./Card";
+import ReviewItem from "./ReviewItem";
 
 function ReviewList() {
 
-    const {reviews} = useContext(ReviewContext);
+    const { reviews } = useContext(ReviewContext);
 
     if (!reviews || reviews.length === 0) {
         return <div>Be the first to review!</div>
@@ -13,10 +13,7 @@ function ReviewList() {
         <div>
             {reviews.map(function (review) {
                 return (
-                    <Card>
-                        <div>{review.text}</div>
-
-                    </Card>
+                    <ReviewItem key={review.id} item={review}/>
                 )
             })}
         </div>
