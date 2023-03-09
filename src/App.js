@@ -5,17 +5,25 @@ import ReviewForm from "./components/ReviewForm";
 import ReviewStats from "./components/ReviewStats";
 import {ReviewProvider} from "./context/ReviewsContext";
 import ReviewList from "./components/ReviewList";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 
 function App() {
     return (
         <ReviewProvider>
-            <>
-                <Header/>
-                <ReviewForm/>
-                <ReviewStats/>
-                <ReviewList/>
-            </>
+            <Router>
+                <Routes>
+                    <Route exact path="/" element={
+                        <>
+                            <Header/>
+                            <ReviewForm/>
+                            <ReviewStats/>
+                            <ReviewList/>
+                        </>
+                    }>
+                    </Route>
+                </Routes>
+            </Router>
         </ReviewProvider>
   );
 }
