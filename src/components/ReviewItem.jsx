@@ -5,8 +5,8 @@ import Card from "./Card";
 function ReviewItem( {item} ) {
     return (
         <>
+            <div className="rating-display">{item.rating}</div>
             <Card>
-                <div className="rating-display">{item.rating}</div>
                 <div className="review-display">{item.text}</div>
             </Card>
         </>
