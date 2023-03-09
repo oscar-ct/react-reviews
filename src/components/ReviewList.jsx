@@ -1,6 +1,7 @@
 import {useContext} from "react";
 import ReviewContext from "../context/ReviewsContext";
 import ReviewItem from "./ReviewItem";
+import {motion, AnimatePresence} from "framer-motion";
 
 function ReviewList() {
 
@@ -11,11 +12,15 @@ function ReviewList() {
     }
     return (
         <div>
+            <AnimatePresence>
             {reviews.map(function (review) {
                 return (
-                    <ReviewItem key={review.id} item={review}/>
+                    <motion.div key={review.id} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                        <ReviewItem key={review.id} item={review}/>
+                    </motion.div>
                 )
             })}
+            </AnimatePresence>
         </div>
 
     )

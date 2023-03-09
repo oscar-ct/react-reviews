@@ -115,4 +115,11 @@ input[type='radio'] {
   width: 30px;
   vertical-align: middle;
 }
-
+.about-link-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+.about-link {
+  color: white;
+}

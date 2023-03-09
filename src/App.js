@@ -6,6 +6,8 @@ import ReviewStats from "./components/ReviewStats";
 import {ReviewProvider} from "./context/ReviewsContext";
 import ReviewList from "./components/ReviewList";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import About from "./components/About";
+import AboutLink from "./components/AboutLink";
 
 
 function App() {
@@ -15,15 +17,19 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={
                         <>
-                            <Header/>
+                            <Header title="Reviews"/>
                             <ReviewForm/>
                             <ReviewStats/>
                             <ReviewList/>
+                            <AboutLink/>
                         </>
                     }>
                     </Route>
+                    <Route path="/about" element={<About/>}>
+                    </Route>
                 </Routes>
             </Router>
+
         </ReviewProvider>
   );
 }
