@@ -13,7 +13,7 @@ export const ReviewProvider = function ( {children} ) {
         },
         {
             id: 2,
-            text: "Love the app",
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra mauris in aliquam sem fringilla ut morbi. Amet dictum sit amet justo donec enim diam vulputate ut. Molestie nunc non blandit massa enim.",
             rating: 7
         },
         {

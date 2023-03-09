@@ -123,3 +123,8 @@ input[type='radio'] {
 .about-link {
   color: white;
 }
+.about-text {
+  color: white;
+  font-size: 18px;
+  line-height: 25px;
+}
