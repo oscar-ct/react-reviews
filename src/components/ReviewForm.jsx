@@ -1,5 +1,5 @@
 import Card from "./Card";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import Button from "./Button";
 import RatingSelect from "./RatingSelect";
 import ReviewContext from "../context/ReviewsContext";
@@ -12,7 +12,16 @@ function ReviewForm() {
     const [btnDisabled, setBtnDisabled] = useState(true);
     const [rating, setRating] = useState(10);
 
-    const { addReview } = useContext(ReviewContext);
+    const { addReview, reviewEditState, updateReview } = useContext(ReviewContext);
+
+    useEffect(function () {
+        if (reviewEditState.edit === true) {
+            setBtnDisabled(false)
+            setText(reviewEditState.item.text)
+            setRating(reviewEditState.item.rating)
+        }
+    }, [reviewEditState]);
+
 
     const handleMessage = (e) => {
         if (text === "") {
@@ -34,14 +43,20 @@ function ReviewForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (text.trim().length >= 10) {
+
             const newReview = {
                 id: id++,
                 text: text,
                 rating: rating,
             }
-            addReview(newReview);
+            if (reviewEditState.edit === true) {
+                updateReview(reviewEditState.item.id, newReview);
+                reviewEditState.edit = false;
+            } else {
+                addReview(newReview);
+            }
+            setText("");
         }
-        setText('');
     }
 
     return (

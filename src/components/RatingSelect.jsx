@@ -1,10 +1,18 @@
-import {useState} from "react";
-// import ReviewContext from "../context/ReviewsContext";
-// import {useContext} from "@types/react";
+import {useEffect, useState, useContext} from "react";
+import ReviewContext from "../context/ReviewsContext";
+
 
 function RatingSelect( {select} ) {
 
     const [selected, setSelected] = useState(10);
+
+    const { reviewEditState } = useContext(ReviewContext);
+
+    useEffect(function () {
+        if (reviewEditState.edit === true) {
+            setSelected(reviewEditState.item.rating)
+        }
+    }, [reviewEditState])
 
     const handleChange = (e) => {
         setSelected(parseInt(e.currentTarget.value))
@@ -56,7 +64,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 4}
                 />
-                <label htmlFor='num1'>4</label>
+                <label htmlFor='num4'>4</label>
             </li>
             <li className="rating">
                 <input
@@ -67,7 +75,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 5}
                 />
-                <label htmlFor='num2'>5</label>
+                <label htmlFor='num5'>5</label>
             </li>
             <li className="rating">
                 <input
@@ -78,7 +86,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 6}
                 />
-                <label htmlFor='num3'>6</label>
+                <label htmlFor='num6'>6</label>
             </li>
             <li className="rating">
                 <input
@@ -89,7 +97,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 7}
                 />
-                <label htmlFor='num1'>7</label>
+                <label htmlFor='num7'>7</label>
             </li>
             <li className="rating">
                 <input
@@ -100,7 +108,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 8}
                 />
-                <label htmlFor='num2'>8</label>
+                <label htmlFor='num8'>8</label>
             </li>
             <li className="rating">
                 <input
@@ -111,7 +119,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 9}
                 />
-                <label htmlFor='num3'>9</label>
+                <label htmlFor='num9'>9</label>
             </li>
             <li className="rating">
                 <input
@@ -122,7 +130,7 @@ function RatingSelect( {select} ) {
                     onChange={handleChange}
                     checked={selected === 10}
                 />
-                <label htmlFor='num3'>10</label>
+                <label htmlFor='num10'>10</label>
             </li>
         </ul>
     )

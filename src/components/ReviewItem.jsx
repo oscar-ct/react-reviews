@@ -7,10 +7,14 @@ import ReviewContext from "../context/ReviewsContext";
 
 function ReviewItem( {item} ) {
 
-    const { deleteReview } = useContext(ReviewContext);
+    const { deleteReview, editReview} = useContext(ReviewContext);
 
     const handleDelete = () => {
         deleteReview(item.id);
+    }
+
+    const handleEdit = () => {
+        editReview(item)
     }
 
     return (
@@ -18,7 +22,7 @@ function ReviewItem( {item} ) {
             <div className="rating-display">{item.rating}</div>
             <Card>
                 <div className="crud-wrapper">
-                    <button className="icn" onClick={() => alert("hey")}>
+                    <button className="icn" onClick={handleEdit}>
                         <FaEdit  color="purple" />
                     </button>
                     <button className="icn" onClick={handleDelete}>

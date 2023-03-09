@@ -23,6 +23,12 @@ export const ReviewProvider = function ( {children} ) {
         }
     ]);
 
+    const [reviewEditState, setReviewEditState] = useState({
+        item: {},
+        edit: false
+
+    });
+
     const addReview = (newReview) => {
       setReviews([newReview, ...reviews])
     }
@@ -35,8 +41,26 @@ export const ReviewProvider = function ( {children} ) {
         }
     }
 
+
+    const editReview = (item) => {
+        setReviewEditState({
+            item: item,
+            edit: true
+        });
+    }
+
+    const updateReview = (id, updItem) => {
+        setReviews(reviews.map(function (item) {
+            if (item.id === id) {
+                return { ...item, ...updItem }
+            } else {
+                return item;
+            }
+        }));
+    }
+
     return <ReviewContext.Provider
-    value={{reviews, addReview, deleteReview}}>
+    value={{reviews, addReview, deleteReview, reviewEditState, editReview, updateReview}}>
         {children}
     </ReviewContext.Provider>
 }
