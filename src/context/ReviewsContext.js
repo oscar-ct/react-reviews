@@ -32,7 +32,7 @@ export const ReviewProvider = function ( {children} ) {
                 const data = await response.json();
                 setReviews(data);
                 setIsLoading(false);
-        });
+            });
     }
 
 
@@ -45,7 +45,7 @@ export const ReviewProvider = function ( {children} ) {
             },
         });
         const data = await response.json();
-        /// replaced newReview with data
+        // / replaced newReview with data
         setReviews([data, ...reviews])
     }
 
