@@ -4,7 +4,7 @@ import Button from "./Button";
 import RatingSelect from "./RatingSelect";
 import ReviewContext from "../context/ReviewsContext";
 
-let id = 100;
+// let id = 100;
 function ReviewForm() {
 
     const [text, setText] = useState("");
@@ -45,7 +45,7 @@ function ReviewForm() {
         if (text.trim().length >= 10) {
 
             const newReview = {
-                id: id++,
+                // id: id++,
                 text: text,
                 rating: rating,
             }
