@@ -36,8 +36,17 @@ export const ReviewProvider = function ( {children} ) {
     }
 
 
-    const addReview = (newReview) => {
-      setReviews([newReview, ...reviews])
+    const addReview = async (newReview) => {
+        const response = await fetch("http://localhost:5000/reviews/", {
+            method: "POST",
+            body: JSON.stringify(newReview),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        const data = await response.json();
+        /// replaced newReview with data
+        setReviews([data, ...reviews])
     }
 
     const deleteReview = (id) => {
