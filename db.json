@@ -1,0 +1,19 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "This is a review 1 from coming from json server"
+    },
+    {
+      "id": 2,
+      "rating": 8,
+      "text": "This is a review 2 from coming from json server"
+    },
+    {
+      "id": 3,
+      "rating": 9,
+      "text": "This is a review 3 from coming from json server"
+    }
+  ]
+}
