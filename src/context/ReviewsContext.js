@@ -5,13 +5,13 @@ const ReviewContext = createContext();
 
 export const ReviewProvider = function ( {children} ) {
 
+    ////  State  /////
     const [reviews, setReviews] = useState([]);
-
     const [reviewEditState, setReviewEditState] = useState({
         item: {},
         edit: false
-
     });
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(function () {
@@ -31,6 +31,7 @@ export const ReviewProvider = function ( {children} ) {
             .then(async function (response) {
                 const data = await response.json();
                 setReviews(data);
+                setIsLoading(false);
         });
     }
 
@@ -66,7 +67,7 @@ export const ReviewProvider = function ( {children} ) {
     }
 
     return <ReviewContext.Provider
-    value={{reviews, addReview, deleteReview, reviewEditState, editReview, updateReview}}>
+    value={{reviews, addReview, deleteReview, reviewEditState, editReview, updateReview, isLoading}}>
         {children}
     </ReviewContext.Provider>
 }
