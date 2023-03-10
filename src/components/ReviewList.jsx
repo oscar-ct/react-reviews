@@ -2,6 +2,7 @@ import {useContext} from "react";
 import ReviewContext from "../context/ReviewsContext";
 import ReviewItem from "./ReviewItem";
 import {motion, AnimatePresence} from "framer-motion";
+import Spinner from "./Spinner";
 
 function ReviewList() {
 
@@ -12,7 +13,7 @@ function ReviewList() {
     }
 
     if (isLoading) {
-        return <h1>Loading...</h1>
+        return <Spinner/>
     } else {
         return (
             <div>
