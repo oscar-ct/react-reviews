@@ -1,33 +1,39 @@
-import {createContext, useState} from "react";
+import {createContext, useState, useEffect} from "react";
 
 
 const ReviewContext = createContext();
 
 export const ReviewProvider = function ( {children} ) {
 
-    const [reviews, setReviews] = useState([
-        {
-            id: 1,
-            text: "This app is awesome! Great Work.",
-            rating: 8
-        },
-        {
-            id: 2,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra mauris in aliquam sem fringilla ut morbi. Amet dictum sit amet justo donec enim diam vulputate ut. Molestie nunc non blandit massa enim.",
-            rating: 7
-        },
-        {
-            id: 3,
-            text: "Would buy again, highly recommend",
-            rating: 10
-        }
-    ]);
+    const [reviews, setReviews] = useState([]);
 
     const [reviewEditState, setReviewEditState] = useState({
         item: {},
         edit: false
 
     });
+
+
+    useEffect(function () {
+        fetchData();
+        // fetchReviews();
+    }, []);
+
+    // const fetchReviews  = async () => {
+    //     const response = await fetch("http://localhost:5000/reviews?_sort=id&_order=desc");
+    //     const data = await response.json();
+    //     setReviews(data)
+    //     console.log(data);
+    // }
+
+    const fetchData = () => {
+        fetch("http://localhost:5000/reviews?_sort=id&_order=desc")
+            .then(async function (response) {
+                const data = await response.json();
+                setReviews(data);
+        });
+    }
+
 
     const addReview = (newReview) => {
       setReviews([newReview, ...reviews])
