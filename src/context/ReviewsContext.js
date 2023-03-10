@@ -49,8 +49,13 @@ export const ReviewProvider = function ( {children} ) {
         setReviews([data, ...reviews])
     }
 
-    const deleteReview = (id) => {
+    const deleteReview = async (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
+
+            await fetch("http://localhost:5000/reviews/" + id, {
+                method: "DELETE",
+            });
+
             setReviews(reviews.filter(function (review) {
                 return review.id !== id;
             }));
@@ -65,10 +70,21 @@ export const ReviewProvider = function ( {children} ) {
         });
     }
 
-    const updateReview = (id, updItem) => {
+    const updateReview = async (id, updItem) => {
+
+        const response = await fetch("http://localhost:5000/reviews/" + id, {
+            method: "PUT",
+            body: JSON.stringify(updItem),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        const data = await response.json();
+
         setReviews(reviews.map(function (item) {
             if (item.id === id) {
-                return { ...item, ...updItem }
+                // replaced updItem with data from json server
+                return { ...item, ...data }
             } else {
                 return item;
             }
